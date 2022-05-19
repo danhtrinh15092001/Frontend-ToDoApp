@@ -1,5 +1,5 @@
 <template>
-    <input type="checkbox" class="info__list-checkbox" @click="toggleComplete" />
+    <input type="checkbox" class="info__list-checkbox" @click="toggleComplete" :class="{ check: subtask.state }" />
     <div class="list-name ml-3" :class="{ complete: subtask.state }">
         {{ subtask.nameTaskDetail }}
     </div>
@@ -57,7 +57,7 @@ export default defineComponent({
     outline: none;
 }
 
-.info__list-checkbox[type="checkbox"]:after {
+/* .info__list-checkbox[type="checkbox"]:after {
     content: "\f00c";
     font-weight: 900;
     font-size: 20px;
@@ -75,6 +75,19 @@ export default defineComponent({
 }
 
 .info__list-checkbox[type="checkbox"]:checked::after {
+    display: block;
+} */
+
+.info__list-checkbox.check {
+    background-color: #5bcd3e;
+}
+
+.info__list-checkbox.check::after {
+    content: "\f00c";
+    font-weight: 900;
+    font-size: 20px;
+    color: white;
+    font-family: "Font Awesome 5 Free";
     display: block;
 }
 </style>
